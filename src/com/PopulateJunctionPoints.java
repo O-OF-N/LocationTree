@@ -30,34 +30,7 @@ public class PopulateJunctionPoints {
 	public Set<Integer> pathThroughJunction(int locationId) {
 		return pathThroughJunction.get(locationId);
 	}
-	
-	/*public void buildJunctionPoints() {
-		PopulateJunctionPoints pj = new PopulateJunctionPoints();
-		Set<Integer> locations = Data.path.get(pathId);
-		System.out.println(locations);
-		for (Integer location : locations) {
-			if (Data.locationType.get(location) == 2) {
-				Set<Integer> pathIds = pj.pathThroughJunction(location);
-				System.out.println(pathIds);
-				for (Integer path : pathIds) {
 
-					System.out.println(this.pathId);
-					System.out.println(path.intValue());
-					if (this.pathId != path.intValue()) {
-						System.out.println("Here>>>>>>>");
-						JunctionPoint jp = new JunctionPoint(this);
-						jp.setLocationId(locationId);
-						jp.setPathId(pathId);
-						jp.addDirectChildren(pj.locationsOnPath(path));
-						jp.buildJunctionPoints();
-						junctionPoints.add(jp);
-					} else{
-						System.out.println("not Here>>>>>>");
-					}
-				}
-			}
-		}
-	}*/
 	
 	public JunctionPoint buildJunctionPoints(Set<Integer> junctionPointIds, JunctionPoint parent){
 		

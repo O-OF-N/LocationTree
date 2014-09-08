@@ -1,8 +1,6 @@
 package com;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 
 import model.Data;
@@ -15,7 +13,7 @@ public class MainClass {
 	public static void main(String[] args) {
 		Data.populateData();
 		int level = 0;
-		int levelMax = 4;
+		int levelMax = 2;
 		Set<Integer> jpsCovered = new HashSet<>();
 		PopulateJunctionPoints pj = new PopulateJunctionPoints();
 		Set<Integer> pathIds = pj.pathThroughJunction(10);
@@ -27,23 +25,28 @@ public class MainClass {
 			jp.setPathId(pathId);
 			jp.addDirectChildren(pj.locationsOnPath(pathId));
 			jp.setJunctionPointIds(pj.junctionsOnPath(pathId));
+			pj.buildJunctionPoints(jp.getJunctionPointIds(), jp);
 			System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>");
 			System.out.println(jp.getDirectChildren());
 			System.out.println(jp.getAllChildren());
+			
 			System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>");
 			level = 1;
-			JunctionPoint currentParent = null;
+			JunctionPoint currentParent = jp;
 			jpsCovered.add(10);
 			while (level < levelMax) {
-				if (level == 1) {
+				System.out.println("LEVEL =" + level);
+				/*if (level == 1) {
 					pj.buildJunctionPoints(jp.getJunctionPointIds(), jp);
 					currentParent = jp;
-				} else {
+				} else {*/
 					System.out.println("junction points at this level are = "
 							+ currentParent.getJunctionPointIds());
 					System.out.println("junction points covered = "+ jpsCovered);
 					for (JunctionPoint jp1 : currentParent.getJunctionPoints()) {
+						System.out.println("current junction point = " + jp1.getLocationId());
 						if (!jpsCovered.contains(jp1.getLocationId())) {
+							System.out.println("inside>>");
 							pj.buildJunctionPoints(jp1.getJunctionPointIds(),
 									jp1);
 							System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!"
@@ -54,12 +57,13 @@ public class MainClass {
 							currentParent = jp1;
 							jpsCovered.add(currentParent.getLocationId());
 						}
-					}
+					//}
 				}
 				level++;
 			}
 			System.out.println("?????????????");
-			System.out.println(jp.getAllChildren());
+			System.out.println(jp);
+			System.out.println(currentParent);
 		}
 
 	}
