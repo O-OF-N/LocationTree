@@ -67,6 +67,7 @@ public class JunctionPoint {
 
 	// To add direct children
 	public void addDirectChildren(Set<Integer> locations) {
+		System.out.println("inside direct children");
 		if (directChildren == null)
 			directChildren = new HashSet<Integer>();
 		/*
@@ -94,12 +95,12 @@ public class JunctionPoint {
 		System.out.println("MODIFIED SET OF ALL CHILDREN FOR" + locationId);
 		System.out.println(this.allChildren);
 		if (parent != null) {
-			System.out.println("Parent LOOP!!!!!!!!!");
+			System.out.println("Parent LOOP!!!!!!!!!"+locationId);
 			System.out.println("parent id = " +parent.getLocationId());
 			System.out.println(parent.getAllChildren());
 			parent.addAllChildren(locations);
 			System.out.println(parent.getAllChildren());
-			System.out.println("Parent LOOP>>>>>>>>");
+			System.out.println("Parent LOOP>>>>>>>>"+locationId);
 		}
 	}
 

@@ -63,7 +63,18 @@ public class MainClass {
 			}
 			System.out.println("?????????????");
 			System.out.println(jp);
+			for(JunctionPoint jp10 : jp.getJunctionPoints()){
+				System.out.println("JP10>>>>>>>>>>>>>");
+				System.out.println(jp10);
+				for(JunctionPoint jp11 : jp10.getJunctionPoints()){
+					System.out.println("JP11>>>>>>>>>>>>>");
+					System.out.println(jp11);					
+				}
+			}
+				
 			System.out.println(currentParent);
+			System.out.println(jpsCovered);
+			
 		}
 
 	}

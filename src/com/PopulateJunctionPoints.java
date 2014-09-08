@@ -31,25 +31,30 @@ public class PopulateJunctionPoints {
 		return pathThroughJunction.get(locationId);
 	}
 
-	
-	public JunctionPoint buildJunctionPoints(Set<Integer> junctionPointIds, JunctionPoint parent){
-		
-		for(Integer junction : junctionPointIds){
-			Set<Integer> pathIds = pathThroughJunction(junction);
-			for(Integer pathId : pathIds){
-				if(pathId != parent.getPathId()){
-					JunctionPoint jp = new JunctionPoint(parent);
-					jp.setLocationId(junction);
-					jp.setPathId(pathId);
-					jp.addDirectChildren(locationsOnPath(pathId));
-					jp.setJunctionPointIds(junctionsOnPath(pathId));
-					
-					parent.getJunctionPoints().add(jp);
+	public JunctionPoint buildJunctionPoints(Set<Integer> junctionPointIds,
+			JunctionPoint parent) {
+
+		for (Integer junction : junctionPointIds) {
+			if (junction != parent.getLocationId()) {
+				Set<Integer> pathIds = pathThroughJunction(junction);
+				for (Integer pathId : pathIds) {
+					System.out.println("///////////////////" + pathId);
+					System.out.println("///////////////////"
+							+ parent.getPathId());
+					System.out.println(parent.getAllChildren());
+					if (pathId != parent.getPathId()) {
+						JunctionPoint jp = new JunctionPoint(parent);
+						jp.setLocationId(junction);
+						jp.setPathId(pathId);
+						jp.addDirectChildren(locationsOnPath(pathId));
+						jp.setJunctionPointIds(junctionsOnPath(pathId));
+
+						parent.getJunctionPoints().add(jp);
+					}
 				}
 			}
-			
 		}
-			return parent;
+		return parent;
 	}
 
 }
