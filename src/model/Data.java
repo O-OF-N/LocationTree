@@ -27,9 +27,13 @@ public class Data {
 		locationType.put(22, 1);
 		locationType.put(23, 1);
 		locationType.put(24, 1);
-		//Set<Integer> path1 = new HashSet<>();
-		//path1.add(10);
-		//path.put(1, path1);
+		locationType.put(25, 2);
+		locationType.put(26, 1);
+		locationType.put(27, 2);
+		locationType.put(28, 1);
+		locationType.put(29, 1);
+		
+		
 		Set<Integer> path2 = new HashSet<>();
 		path2.add(10);
 		path2.add(11);
@@ -37,16 +41,20 @@ public class Data {
 		path2.add(22);
 		path2.add(19);
 		path.put(2, path2);
+		
 		Set<Integer> path3 = new HashSet<>();
 		path3.add(14);
 		path3.add(13);
+		path3.add(27);
 		path3.add(12);
 		path3.add(15);
 		path3.add(16);
 		path3.add(17);
 		path.put(3, path3);
+		
 		Set<Integer> path4 = new HashSet<>();
 		path4.add(16);
+		path4.add(25);
 		path4.add(18);
 		path.put(4, path4);
 		
@@ -61,22 +69,42 @@ public class Data {
 		path6.add(23);
 		path6.add(24);
 		path.put(6, path6);
+		
+		Set<Integer> path7 = new HashSet<>();
+		path7.add(25);
+		path7.add(26);
+		path.put(7, path7);
+		
+		Set<Integer> path8 = new HashSet<>();
+		path8.add(27);
+		path8.add(28);
+		path8.add(29);
+		path.put(8, path8);
+		
 		Set<Integer> paths = new HashSet<>();
 		paths.add(2);
 		pathThroughJunction.put(10, paths);
 		paths = new HashSet<>();
 		paths.add(3);
 		paths.add(2);
+		paths.add(6);
 		pathThroughJunction.put(12, paths);
 		paths = new HashSet<>();
 		paths.add(3);
 		paths.add(4);
-		paths.add(6);
 		pathThroughJunction.put(16, paths);
 		paths = new HashSet<>();
 		paths.add(2);
 		paths.add(5);
 		pathThroughJunction.put(19, paths);
+		paths = new HashSet<>();
+		paths.add(4);
+		paths.add(7);
+		pathThroughJunction.put(25, paths);
+		paths = new HashSet<>();
+		paths.add(3);
+		paths.add(8);
+		pathThroughJunction.put(27, paths);
 
 	}
 

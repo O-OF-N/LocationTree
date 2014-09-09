@@ -67,18 +67,9 @@ public class JunctionPoint {
 
 	// To add direct children
 	public void addDirectChildren(Set<Integer> locations) {
-		System.out.println("inside direct children");
 		if (directChildren == null)
-			directChildren = new HashSet<Integer>();
-		/*
-		 * System.out.println("CURRENT SET OF DIRECT CHILDREN FOR" +
-		 * locationId); System.out.println(this.directChildren);
-		 */
+			directChildren = new HashSet<Integer>();	
 		this.directChildren.addAll(locations);
-		/*
-		 * System.out.println("MODIFIED SET OF DIRECT CHILDREN FOR" +
-		 * locationId); System.out.println(this.directChildren);
-		 */
 		addAllChildren(locations);
 
 	}
@@ -88,26 +79,17 @@ public class JunctionPoint {
 
 		if (this.allChildren == null)
 			this.allChildren = new HashSet<Integer>();
-		System.out.println("CURRENT SET OF ALL CHILDREN FOR" + locationId);
-		System.out.println(this.allChildren);
 		this.allChildren.addAll(locations);
-
-		System.out.println("MODIFIED SET OF ALL CHILDREN FOR" + locationId);
-		System.out.println(this.allChildren);
 		if (parent != null) {
-			System.out.println("Parent LOOP!!!!!!!!!"+locationId);
-			System.out.println("parent id = " +parent.getLocationId());
-			System.out.println(parent.getAllChildren());
 			parent.addAllChildren(locations);
-			System.out.println(parent.getAllChildren());
-			System.out.println("Parent LOOP>>>>>>>>"+locationId);
 		}
 	}
 
 	@Override
 	public String toString() {
-		return "locationId = " + this.locationId + "\n all children = "
+		return "{locationId = " + this.locationId + " : pathid=" + this.pathId +
+				"\n all children = "
 				+ this.allChildren + "\n direct Children = "
-				+ this.directChildren;
+				+ this.directChildren +"}";
 	}
 }
